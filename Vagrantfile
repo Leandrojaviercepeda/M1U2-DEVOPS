@@ -9,7 +9,7 @@ Vagrant.configure("2") do |config|
         # Settings
         subconfig.vm.provider "virtualbox" do |v|
             v.name = "local-dev.utn-devops.int"
-            v.memory = "2048"
+            v.memory = "1024"
         end
         subconfig.vm.hostname = "local-dev"
         subconfig.vm.network "forwarded_port", guest: 8081, host: 8081, guest_ip: LOCAL_IP, auto_correct: true
@@ -19,13 +19,13 @@ Vagrant.configure("2") do |config|
         # Shared folder
         subconfig.vm.synced_folder ".", "/var/www/utn-devops-app"
 
-        # # Provision
+        # Provision
         # subconfig.vm.provision "file", source: "local_environment_configs/ufw", destination: "/tmp/ufw"
         # subconfig.vm.provision "file", source: "local_environment_configs/etc_hosts.txt", destination: "/tmp/hosts"
         # subconfig.vm.provision "file", source: "local_environment_configs/domain.crt", destination: "/tmp/domain.crt"
         # subconfig.vm.provision "file", source: "docker-configs/config.json", destination: "/tmp/config.json"
         # subconfig.vm.provision :shell, path: "Vagrant.local.bootstrap.sh"
-        # #
+        #
     end
   #
 end
