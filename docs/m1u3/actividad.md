@@ -36,7 +36,7 @@ Sugerencia: Para generar el espacio colaborativo donde puedan compartir pantalla
   * Pagina Home de la aplicacion: https://github.com/leandrojaviercepeda/comics-web-dpwfsrjs-utn/blob/develop/src/components/Home/Home.js
   * Script (frontend) con logica de solicitud HTTP GET (linea 13 a linea 27): https://github.com/leandrojaviercepeda/comics-web-dpwfsrjs-utn/blob/develop/src/components/Characters/CharsList.js
   * Script (backend) con logica de solicitud de datos a la BBDD comics TABLA charact (linea 4 a linea 18): https://github.com/leandrojaviercepeda/comics-api-dpwfsrjs-utn/blob/develop/src/characterModel.js
-  * Docker Compose (docker-compose.yml) con servicios requeridos para el proyecto: 
+  * Docker Compose (docker-compose.yml) con servicios requeridos para el proyecto: https://github.com/leandrojaviercepeda/m1u2-devops-utn/blob/main/docker/docker-compose.yml
 
   * En la pagina Home del sitio web se se realiza una solicitud HTTP GET a una API (comics-api/servidor express de backend) a un endpoint, dicho endpoint tiene la logica integrada para consumir los datos de personajes (TABLA charact de BBDD comics) de una base de datos mysql, luego estos son enviados al cliente (aplicacion frontend ReactJS) para ser presentados.
 
