@@ -1,7 +1,11 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
-
 Vagrant.configure("2") do |config|
+
+    # Permitimos bajar la box sin verificar el certificado de seguridad.
+    # TODO: Buscar alternativas para remover esta linea.
+    config.vm.box_download_insecure = true
+
 
     # Con esto le indicamos a Vagrant ue vaya al directorio de "cajas" (boxes) que contiene su Atlas e instale un
     # Ubuntu 64 bits mediante el gestor de maquinas virtuales VirtualBox
