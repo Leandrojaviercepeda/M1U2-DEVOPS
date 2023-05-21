@@ -25,7 +25,7 @@ Sugerencia: Para generar el espacio colaborativo donde puedan compartir pantalla
 ## Entregables:
 
 1. URLs de los 2 repositorios git:
-  * Repositorio de la actividad proncipal (DevOps): https://github.com/leandrojaviercepeda/m1u2-devops-utn
+  * Repositorio de la actividad principal (DevOps): https://github.com/leandrojaviercepeda/m1u2-devops-utn/tree/unidad-2-docker
   * Repositorio frontend de la aplicacion: https://github.com/leandrojaviercepeda/comics-web-dpwfsrjs-utn
   * Repositrio backend de la aplicacion: https://github.com/leandrojaviercepeda/comics-api-dpwfsrjs-utn
   * Registry DockerHub de frontend: https://hub.docker.com/repository/docker/leandrojaviercepeda/comics-web-dpwfsrjs-utn/general
@@ -36,8 +36,7 @@ Sugerencia: Para generar el espacio colaborativo donde puedan compartir pantalla
   * Pagina Home de la aplicacion: https://github.com/leandrojaviercepeda/comics-web-dpwfsrjs-utn/blob/develop/src/components/Home/Home.js
   * Script (frontend) con logica de solicitud HTTP GET (linea 13 a linea 27): https://github.com/leandrojaviercepeda/comics-web-dpwfsrjs-utn/blob/develop/src/components/Characters/CharsList.js
   * Script (backend) con logica de solicitud de datos a la BBDD comics TABLA charact (linea 4 a linea 18): https://github.com/leandrojaviercepeda/comics-api-dpwfsrjs-utn/blob/develop/src/characterModel.js
-  * Docker Compose (docker-compose.yml) con servicios requeridos para el proyecto: https://github.com/leandrojaviercepeda/m1u2-devops-utn/blob/main/docker/docker-compose.yml
-
+  * Docker Compose (docker-compose.yml) con servicios requeridos para el proyecto: https://github.com/leandrojaviercepeda/m1u2-devops-utn/blob/unidad-2-docker/docker/docker-compose.yml
   * En la pagina Home del sitio web se se realiza una solicitud HTTP GET a una API (comics-api/servidor express de backend) a un endpoint, dicho endpoint tiene la logica integrada para consumir los datos de personajes (TABLA charact de BBDD comics) de una base de datos mysql, luego estos son enviados al cliente (aplicacion frontend ReactJS) para ser presentados.
 
   * Para verificar que efectivamente existe un contenedor docker con mysql y un volumen creado para la persistencia de los datos de la BBDD corriendo en la VM se ejecutaron los siguientes comandos:
