@@ -23,7 +23,7 @@ Sugerencia: Para generar el espacio colaborativo donde puedan compartir pantalla
 ## Entregables:
 
 1. URLs de los 2 repositorios git:
-  * Repositorio de la actividad proncipal (DevOps): https://github.com/leandrojaviercepeda/m1u2-devops-utn
+  * Repositorio de la actividad principal (DevOps): https://github.com/leandrojaviercepeda/m1u2-devops-utn/tree/unidad-1-vagrant
   * Repositorio frontend de la aplicacion: https://github.com/leandrojaviercepeda/comics-web-dpwfsrjs-utn
   * Repositrio backend de la aplicacion: https://github.com/leandrojaviercepeda/comics-api-dpwfsrjs-utn
   * Registry DockerHub de frontend: https://hub.docker.com/repository/docker/leandrojaviercepeda/comics-web-dpwfsrjs-utn/general
