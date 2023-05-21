@@ -30,12 +30,30 @@ Vagrant.configure("2") do |config|
     # your network.
     # config.vm.network "public_network"
   
-    # configuración del nombre de maquina
     config.vm.hostname = "utn-devops.localhost"
     config.vm.boot_timeout = 3600
-    config.vm.provider "virtualbox" do |v|
+    # Provider-specific configuration so you can fine-tune various
+    # backing providers for Vagrant. These expose provider-specific options.
+    # Example for VirtualBox:
+    #
+    config.vm.provider "virtualbox" do |vb|
+      
+      # configuración del nombre de maquina
       v.name = "utn-devops-vagrant-ubuntu"
+
+      # Las sig. configs ayuda a evitar crasheos a la hora de inicializar el ssh.
+      # En caso de tener problemas inicializando el SSH recomendamos habilitar los logs-
+      # o habilitar la gui para ver que error lanza.
+      # IMPORTANTE: Si estan trabajando en windows y tienen el docker client es probable que no funcione.
+
+      vb.customize ["modifyvm", :id, "--uart1", "0x3F8", "4"]
+      vb.customize ["modifyvm", :id, "--uartmode1", "file", File::NULL]
+
+      # Habilitar vb.gui levantara vitual box al crear la MV.
+      # vb.gui = true
+
     end
+
     # Share an additional folder to the guest VM. The first argument is
     # the path on the host to the actual folder. The second argument is
     # the path on the guest to mount the folder. And the optional third
@@ -46,19 +64,6 @@ Vagrant.configure("2") do |config|
     # el propio directorio donde está el archivo  y el directorio "/vagrant" dentro de la maquina virtual.
     config.vm.synced_folder ".", "/vagrant"
   
-  
-    # Provider-specific configuration so you can fine-tune various
-    # backing providers for Vagrant. These expose provider-specific options.
-    # Example for VirtualBox:
-    #
-    config.vm.provider "virtualbox" do |vb|
-    #   # Display the VirtualBox GUI when booting the machine
-    #   vb.gui = true
-    #
-    #
-    # Customize the amount of memory on the VM:
-      vb.memory = "1024"
-    end
     #
     # View the documentation for the provider you are using for more
     # information on available options.
