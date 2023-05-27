@@ -11,6 +11,7 @@ Vagrant.configure("2") do |config|
   # Ubuntu 64 bits mediante el gestor de maquinas virtuales VirtualBox
   # El directorio completo de boxes se puede ver en la siguiente URL atlas.hashicorp.com/boxes/search
   config.vm.box = "ubuntu/bionic64"
+  config.vm.box_version = "20230525.0.0"
 
   # Redirecciono puertos desde la maquina virtual a la maquina real. Por ejemplo
   # del puerto 80 (web) de la maquina virtual con Debian se podrá acceder a través
@@ -18,8 +19,7 @@ Vagrant.configure("2") do |config|
   # Esto se realiza para poder darle visibilidad a los puertos de la maquina virtual
   # y además para que no se solapen los puertos con los de nuestra equipo en el caso de que
   # ese número de puerto este en uso.
-  config.vm.network "forwarded_port", guest: 8080, host: 8080
-  config.vm.network "forwarded_port", guest: 4000, host: 4000
+  config.vm.network "forwarded_port", guest: 8080, host: 8081
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
@@ -39,7 +39,7 @@ Vagrant.configure("2") do |config|
   config.vm.provider "virtualbox" do |vb|
     
     # configuración del nombre de maquina
-    vb.name = "utn-devops-vagrant-ubuntu"
+    vb.name = "utn-devops-puppet-ubuntu"
 
     # Las sig. configs ayuda a evitar crasheos a la hora de inicializar el ssh.
     # En caso de tener problemas inicializando el SSH recomendamos habilitar los logs-
@@ -81,11 +81,7 @@ Vagrant.configure("2") do |config|
   #config.vm.provision "shell", inline: <<-SHELL
   #  echo "I am provisioning..."
   #  date > /etc/vagrant_provisioned_at
-  #SHELL
-
-  # Copia el archivo de configuración del servidor web
-  config.vm.provision "file", source: "docker/docker-compose.yml", destination: "/tmp/ci-cd/comics/docker-compose.yml"
-  config.vm.provision "file", source: "docker/init.sql", destination: "/tmp/ci-cd/comics/init.sql"
+  #SHELL  
 
   # En este archivo tendremos el provisionamiento de software necesario para nuestra
   # maquina virtual. Por ejemplo, servidor web, servidor de base de datos, etc.

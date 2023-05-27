@@ -21,37 +21,26 @@ if [ ! -f "/swapdir/swapfile" ]; then
 	echo vm.swappiness = 10 | sudo tee -a /etc/sysctl.conf
 fi
 
-# Install curl
-if [ ! -x "$(command -v curl)" ]; then
-	sudo apt-get install curl -y
+# Install Puppet package
+if [ ! -x "$(command --version puppet master)" ]; then
+	wget https://apt.puppetlabs.com/puppet8-release-bionic.deb
+	sudo dpkg -i puppet8-release-bionic.deb
 fi
 
-# Docker freshinstall
-sudo apt-get update -y && apt-get remove docker docker-engine docker.io containerd runc -y
-
-# Docker install
-if [ ! -x "$(command -v docker)" ]; then
-	# Set up the repository
-	sudo apt-get install ca-certificates curl gnupg -y
-	sudo install -m 0755 -d /etc/apt/keyrings
-	curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg	
-	sudo chmod a+r /etc/apt/keyrings/docker.gpg
-	echo \
-		"deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
-		"$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
-		sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-
-	# Install Docker Engine
+# Install Puppet Master
+if [ ! -x "$(command --version puppet master)" ]; then
 	sudo apt-get update -y
-	sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
+	sudo apt-get install puppetserver -y
 fi
 
-# Install docker compose plugin
-if [ ! -x "$(command version docker compose)" ]; then
+# Install Puppet Agent
+if [ ! -x "$(command --version puppet agent)" ]; then
 	sudo apt-get update -y
-	sudo apt-get install docker-compose-plugin -y
+	sudo apt-get install puppet-agent -y
 fi
 
-# Build docker compose application
-cd /tmp/ci-cd/comics
-sudo docker compose up -d
+sudo systemctl start puppet
+sudo systemctl enable puppet
+
+# Install jenkings with puppet
+puppet module install puppet-jenkins --version 3.3.0
