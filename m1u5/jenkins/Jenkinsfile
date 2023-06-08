@@ -1,0 +1,23 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Prepare') {
+            steps {
+                sh 'git clone https://github.com/IvanAntoff/testing-react-with-jest || true'
+                sh 'cd testing-react-with-jest && npm i --force'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'cd /testing-react-with-jest && npm run test'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'cd /testing-react-with-jest && npm run start'
+                sh 'npm run watch'
+            }
+        }
+    }
+}
