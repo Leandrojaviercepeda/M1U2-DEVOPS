@@ -77,16 +77,3 @@ sudo puppet node clean utn-devops.localhost
 
 # Habilito el agente
 sudo puppet agent --certname utn-devops.localhost --enable
-
-# Estructura de directorios para el proyecto (aplicacion)
-APPLICATION_DIR="/usr/src/app"
-sudo mkdir -p $APPLICATION_DIR
-
-###### Instalación de nvm ######
-if [ ! -x "$(command -v nvm)" ]; then
-  wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
-  source ~/.nvm/nvm.sh
-
-  # Instalación de npm & node
-  nvm install lts/gallium
-fi
